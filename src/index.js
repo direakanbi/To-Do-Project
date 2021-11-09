@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './styles.css';
 import { checkEvent, checkboxState } from './storage';
 import { setToLocalStorage, getFromLocalStorage } from './functions';

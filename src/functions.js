@@ -1,3 +1,4 @@
+/* eslint-disable */
 const setToLocalStorage = ((toDo) => {
     localStorage.setItem('toDo', JSON.stringify(toDo));
   });
