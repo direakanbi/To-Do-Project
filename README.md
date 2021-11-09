@@ -11,17 +11,13 @@
 
 # Getting Started
 
-To get a local copy up and running follow these simple example steps.
+## To get a local copy up and running follow these simple example steps.
 
-Prerequisites
-Setup: Clone direakanbi/webpack-setup.git into the destination folder of your local machine.
-Install: Install linters with the npx commands given in the linters.yml file.
-Usage: N/A
+Setup: Clone direakanbi/To-Do-Project.git into the destination folder on your local machine.
+Install: Install webpack dependencies with the npm commands as given in the tutorial.
 Run tests: Run syntax tests with the use of the npx commands given in the linters.yml file.
-Deployment: Run index.html on your local server.
+Deployment: Run npm start in your terminal.
 
-# Live Version
-Live Demo Link: 
 # Authors
 
 GitHub: @direakanbi
