@@ -1,3 +1,4 @@
+
 import "./styles.css";
 import { checkEvent, checkboxState } from "./storage";
 import { setToLocalStorage, getFromLocalStorage } from "./functions";
@@ -5,17 +6,17 @@ import { setToLocalStorage, getFromLocalStorage } from "./functions";
 // task array of objects
 const toDoList = [
   {
-    description: "Hack NASA",
+    description: 'Hack NASA',
     completed: false,
     index: 0,
   },
   {
-    description: "Start Webpack Project",
+    description: 'Start Webpack Project',
     completed: false,
     index: 1,
   },
   {
-    description: "Make Dinner",
+    description: 'Make Dinner',
     completed: true,
     index: 2,
   },
@@ -35,7 +36,7 @@ export const addBooks = () => {
         checkEvent(sortedList[i].index, false);
       }
       // create list item
-      const list = document.querySelector(".list");
+      const list = document.querySelector('.list');
       list.insertAdjacentHTML(
         "beforeend",
         `
