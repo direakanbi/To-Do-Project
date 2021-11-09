@@ -6,7 +6,7 @@ const checkEvent = () => {
   for (let i = 0; i < checkboxes.length; i += 1) {
     const task = checkboxes[i].nextElementSibling;
 
-    checkboxes[i].addEventListener('click', () => {
+    checkboxes[i].addEventListener('change', () => {
       if (checkboxes[i].checked) {
         task.style.textDecoration = 'line-through';
       } else {
