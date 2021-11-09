@@ -4,9 +4,6 @@ import { checkEvent, checkboxState } from './storage';
 import { setToLocalStorage, getFromLocalStorage } from './functions';
 
 
-// call list
-const list = document.querySelector('.list');
-
 // task array of objects
 const toDoList = [
   {
