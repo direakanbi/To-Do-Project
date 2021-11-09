@@ -1,7 +1,6 @@
-
-import "./styles.css";
-import { checkEvent, checkboxState } from "./storage";
-import { setToLocalStorage, getFromLocalStorage } from "./functions";
+import './styles.css';
+import { checkEvent, checkboxState } from './storage';
+import { setToLocalStorage, getFromLocalStorage } from './functions';
 
 // task array of objects
 const toDoList = [
@@ -23,7 +22,7 @@ const toDoList = [
 ];
 
 // addBooks list
-export const addBooks = () => {
+const addBooks = () => {
   if (getFromLocalStorage() === null) {
     setToLocalStorage(toDoList);
   } else {
@@ -38,22 +37,20 @@ export const addBooks = () => {
       // create list item
       const list = document.querySelector('.list');
       list.insertAdjacentHTML(
-        "beforeend",
+        'beforeend',
         `
           <div class="task">
             <div class="checks">
-              <input type="checkbox" name="item-${
-                sortedList[i].index
-              }" class="checkbox" ${sortedList[i].completed ? "checked" : ""}>
-              <span class="checkmark" ${
-                sortedList[i].completed
-                  ? 'style="text-decoration: line-through"'
-                  : ""
-              }>${sortedList[i].description}</span>
+              <input type="checkbox" name="item-${sortedList[i].index
+}" class="checkbox" ${sortedList[i].completed ? 'checked' : ''}>
+              <span class="checkmark" ${sortedList[i].completed
+    ? 'style="text-decoration: line-through"'
+    : ''
+}>${sortedList[i].description}</span>
             </div>
             <div class="material-icons-outlined">more_vert</div>
           </div>
-        `
+        `,
       );
       checkEvent();
     }
@@ -64,3 +61,5 @@ window.onload = () => {
   checkboxState();
   addBooks();
 };
+
+export default { addBooks };
