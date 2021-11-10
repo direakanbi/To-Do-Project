@@ -1,61 +1,58 @@
-/* eslint-disable */
 import './styles.css';
-import { checkEvent, checkboxState } from './storage';
-import { setToLocalStorage, getFromLocalStorage } from './functions';
+import { sortIndex } from './status';
+import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './store';
+import { addToDo, editToDo, clearAll } from './addremove';
 
+const toDoList = [];
 
-// call list
-const list = document.querySelector('.list');
+// populate list
+const populate = (toDoList, sort) => {
+  let sortedTodo = [];
+  if (sort) {
+    sortedTodo = toDoList.sort((a, b) => a.index - b.index);
+  } else {
+    sortedTodo = toDoList;
+  }
 
-// task array of objects
-const toDoList = [
-  {
-    description: 'Hack NASA',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Start Webpack Project',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Make Dinner',
-    completed: true,
-    index: 2,
-  },
-];
-
-// addBooks list
-export const addBooks = () => {
-    if (getFromLocalStorage() === null) {
-      setToLocalStorage(toDoList);
+  for (let i = 0; i < sortedTodo.length; i += 1) {
+    let style = '';
+    let checkbox = '';
+    if (sortedTodo[i].completed) {
+      style = 'text-decoration: line-through;';
+      checkbox = 'checked';
     } else {
-      const sortedList = getFromLocalStorage().sort((a, b) => a.index - b.index);
-      sortedList.sort((x, y) => x.index - y.index);
-      for (let i = 0; i < sortedList.length; i += 1) {
-        if (sortedList[i].completed === true) {
-          checkEvent(sortedList[i].index, true);
-        } else {
-          checkEvent(sortedList[i].index, false);
-        }
-        // create list item
-        const list = document.querySelector('.list');
-        list.insertAdjacentHTML('beforeend', `
-          <div class="task">
-            <div class="checks">
-              <input type="checkbox" name="item-${sortedList[i].index}" class="checkbox" ${sortedList[i].completed ? 'checked' : ''}>
-              <span class="checkmark" ${sortedList[i].completed ? 'style="text-decoration: line-through"' : ''}>${sortedList[i].description}</span>
-            </div>
-            <div class="material-icons-outlined">more_vert</div>
-          </div>
-        `);
-        checkEvent();
-      }
+      style = 'text-decoration: none;';
+      checkbox = '';
     }
-  };
-  
-  window.onload = () => {
-    checkboxState();
-    addBooks();
-  };
+    // create list item
+    document.getElementById('list').insertAdjacentHTML('beforeend', `
+        <div class="task">
+          <div class="checks">
+            <input type="checkbox" name="item-${sortedTodo[i].index}" ${checkbox}>
+            <label for="item-${sortedTodo[i].index}" style="${style}" contenteditable=true>${sortedTodo[i].description}</label>
+          </div>
+          <div class="buttons-end">
+            <div class="material-icons-outlined">more_vert</div>
+            <span class="material-icons-outlined delete" id="item-${sortedTodo[i].index}">delete_outline</span>
+          </div>
+        </div>
+      `);
+  }
+};
+
+window.addEventListener('load', () => {
+  const localStore = getFromLocalStorage();
+  if (localStore == null) {
+    setToLocalStorage(toDoList, true);
+    populate(toDoList);
+  } else {
+    const sortedTodo = sortIndex(localStore);
+    populate(sortedTodo, false);
+  }
+  reloadToDo();
+  addToDo();
+  editToDo();
+  clearAll();
+});
+
+export { toDoList, populate };
