@@ -26,7 +26,7 @@ const addToDo = () => {
 
 const appendToDo = (task) => {
   const taskList = document.createElement('example');
-  taskList.innerHTML =`
+  taskList.innerHTML = `
           <div class="task">
           <div class="checks">
             <input type="checkbox" name="item-${task.index}" readonly="true">
@@ -66,7 +66,7 @@ const createToDo = (description) => {
 document.querySelector('.input > input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     createToDo(e.target.value);
-    console.log("object");
+    console.log('object');
     window.location.reload();
     e.target.value = '';
   }
