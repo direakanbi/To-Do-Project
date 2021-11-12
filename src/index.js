@@ -1,5 +1,5 @@
 import './styles.css';
-import { sortIndex } from './status.js';
+import { sortIndex } from './function.js';
 import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './storage.js';
 import { addToDo, editToDo, clearAll } from './addremove.js';
 
