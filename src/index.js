@@ -25,7 +25,7 @@ const populate = (toDoList, sort) => {
       checkbox = '';
     }
     // create list item
-    const list = document.createElement('exmaple');
+    const list = document.createElement('example');
     list.innerHTML += `<div class="task">
           <div class="checks">
             <input type="checkbox" name="item-${sortedTodo[i].index}" ${checkbox}>
