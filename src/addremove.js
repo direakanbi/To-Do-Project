@@ -1,5 +1,5 @@
 import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './storage.js';
-import { refreshStore } from './status.js';
+import { refreshStore } from './functions';
 
 const editToDo = () => {
   const toDoList = document.getElementsByClassName('task');
