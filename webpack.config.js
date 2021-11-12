@@ -10,6 +10,8 @@ module.exports = {
     clean: true,
   },
 
+  mode: 'development',
+
   module: {
     rules: [
       {

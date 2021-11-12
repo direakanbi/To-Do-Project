@@ -1,11 +1,11 @@
-import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './storage';
-import { refreshStore } from './functions';
+import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './storage.js';
+import { refreshStore } from './status.js';
 
 const editToDo = () => {
   const toDoList = document.getElementsByClassName('task');
   for (let i = 0; i < toDoList.length; i += 1) {
     const taskLabel = toDoList[i].children[0].children[1];
-    taskLabel.addEventListener('input', () => {
+    taskLabel.addEventListener('click', () => {
       refreshStore();
     });
   }
@@ -19,13 +19,14 @@ const addToDo = () => {
       const inputItem = document.getElementsByName(index)[0];
       inputItem.parentElement.parentElement.remove();
       refreshStore();
+      window.location.reload();
     });
   }
 };
 
 const appendToDo = (task) => {
   document.getElementById('list').insertAdjacentHTML('beforeend', `
-        <div class="task">
+          <div class="task">
           <div class="checks">
             <input type="checkbox" name="item-${task.index}" readonly="true">
             <label for="item-${task.index}" style="text-decoration: none;" contenteditable=true>${task.description}</label>
@@ -42,6 +43,7 @@ const createToDo = (description) => {
   const newTask = {
     description,
     completed: false,
+    index: 0,
   };
 
   const stateList = getFromLocalStorage();
@@ -68,7 +70,7 @@ document.querySelector('.input > input').addEventListener('keypress', (e) => {
 });
 
 const clearAll = () => {
-  document.getElementById('clear-all').addEventListener('change', () => {
+  document.querySelector('.clear').addEventListener('click', () => {
     const toDoList = document.getElementsByClassName('task');
     [...toDoList].filter((toDoList) => toDoList.children[0].children[0].checked)
       .forEach((item) => item.remove());

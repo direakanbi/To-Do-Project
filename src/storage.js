@@ -32,9 +32,8 @@ const updateToDo = (task) => {
 
 const reloadToDo = () => {
   const toDoList = document.getElementsByClassName('task');
-
   [...toDoList].forEach((toDoList) => {
-    toDoList.children[0].children[0].addEventListener('change', () => {
+    toDoList.children[0].children[0].addEventListener('click', () => {
       updateToDo(toDoList);
     });
   });

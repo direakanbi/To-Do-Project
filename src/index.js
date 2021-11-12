@@ -1,7 +1,7 @@
 import './styles.css';
-import { sortIndex } from './status';
-import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './store';
-import { addToDo, editToDo, clearAll } from './addremove';
+import { sortIndex } from './status.js';
+import { setToLocalStorage, getFromLocalStorage, reloadToDo } from './storage.js';
+import { addToDo, editToDo, clearAll } from './addremove.js';
 
 const toDoList = [];
 
@@ -25,8 +25,8 @@ const populate = (toDoList, sort) => {
       checkbox = '';
     }
     // create list item
-    document.getElementById('list').insertAdjacentHTML('beforeend', `
-        <div class="task">
+    const list = document.createElement('exmaple');
+    list.innerHTML += `<div class="task">
           <div class="checks">
             <input type="checkbox" name="item-${sortedTodo[i].index}" ${checkbox}>
             <label for="item-${sortedTodo[i].index}" style="${style}" contenteditable=true>${sortedTodo[i].description}</label>
@@ -35,8 +35,8 @@ const populate = (toDoList, sort) => {
             <div class="material-icons-outlined">more_vert</div>
             <span class="material-icons-outlined delete" id="item-${sortedTodo[i].index}">delete_outline</span>
           </div>
-        </div>
-      `);
+        </div>`;
+    document.querySelector('.list').appendChild(list);
   }
 };
 
