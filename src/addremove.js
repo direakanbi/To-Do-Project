@@ -25,7 +25,8 @@ const addToDo = () => {
 };
 
 const appendToDo = (task) => {
-  document.getElementById('list').insertAdjacentHTML('beforeend', `
+  const taskList = document.createElement('example');
+  taskList.innerHTML = `
           <div class="task">
           <div class="checks">
             <input type="checkbox" name="item-${task.index}" readonly="true">
@@ -36,7 +37,7 @@ const appendToDo = (task) => {
             <span class="material-icons-outlined delete" id="item-${task.index}">delete_outline</span>
           </div>
         </div>
-      `);
+      `;
 };
 
 const createToDo = (description) => {
@@ -65,6 +66,8 @@ const createToDo = (description) => {
 document.querySelector('.input > input').addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
     createToDo(e.target.value);
+    console.log('object');
+    window.location.reload();
     e.target.value = '';
   }
 });
