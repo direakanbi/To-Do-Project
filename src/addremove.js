@@ -7,6 +7,7 @@ const editToDo = () => {
     const taskLabel = toDoList[i].children[0].children[1];
     taskLabel.addEventListener('click', () => {
       refreshStore();
+      setToLocalStorage();
     });
   }
 };
