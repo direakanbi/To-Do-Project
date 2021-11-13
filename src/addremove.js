@@ -5,7 +5,7 @@ const editToDo = () => {
   const toDoList = document.getElementsByClassName('task');
   for (let i = 0; i < toDoList.length; i += 1) {
     const taskLabel = toDoList[i].children[0].children[1];
-    taskLabel.addEventListener('input', () => {
+    taskLabel.addEventListener('click', () => {
       refreshStore();
       setToLocalStorage();
     });
